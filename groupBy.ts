@@ -31,18 +31,10 @@ export function groupBy<T>(list: T[], key: keyof T): Record<string, T[]> {
   }, {});
 }
 
-/**
-  Версия v1
-  Источник: `Access-mapper`, `А360`, `БО ОП`, `ЛК`
-*/
 export function groupByKey<T>(list: T[], key: keyof T) {
   return list.reduce((acc, item) => mergeByKeys(acc, item, [key]), {});
 }
 
-/**
-  Версия v1
-  Источник: `Access-mapper`, `А360`, `БО ОП`, `ЛК`
-*/
 export function groupByKeys<T>(list: T[], keys: Array<keyof T>) {
   return list.reduce((acc, item) => mergeByKeys(acc, item, keys), {});
 }
