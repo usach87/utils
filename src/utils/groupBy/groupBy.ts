@@ -1,6 +1,6 @@
-type TRecursiveDictionaryType<T> = {[key: string]: T | TRecursiveDictionaryType<T>};
+type DictionaryType<T> = {[key: string]: T | DictionaryType<T>};
 
-function mergeByKeys<T>(obj: TRecursiveDictionaryType<T>, item: T, keys: Array<keyof T>): TRecursiveDictionaryType<T> {
+function mergeByKeys<T>(obj: DictionaryType<T>, item: T, keys: Array<keyof T>): DictionaryType<T> {
   const [key, ...restKeys] = keys;
   const keyValue = String(item[key]);
 
@@ -13,7 +13,7 @@ function mergeByKeys<T>(obj: TRecursiveDictionaryType<T>, item: T, keys: Array<k
 
   return {
     ...obj,
-    [keyValue]: mergeByKeys((obj[keyValue] || {}) as TRecursiveDictionaryType<T>, item, restKeys),
+    [keyValue]: mergeByKeys((obj[keyValue] || {}) as DictionaryType<T>, item, restKeys),
   };
 }
 
@@ -31,10 +31,10 @@ export function groupBy<T>(list: T[], key: keyof T): Record<string, T[]> {
   }, {});
 }
 
-export function groupByKey<T>(list: T[], key: keyof T) {
+export function groupByKey<T>(list: T[], key: keyof T): DictionaryType<T>  {
   return list.reduce((acc, item) => mergeByKeys(acc, item, [key]), {});
 }
 
-export function groupByKeys<T>(list: T[], keys: Array<keyof T>) {
+export function groupByKeys<T>(list: T[], keys: Array<keyof T>): DictionaryType<T> {
   return list.reduce((acc, item) => mergeByKeys(acc, item, keys), {});
 }

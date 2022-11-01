@@ -33,8 +33,8 @@ describe('groupBy', () => {
       ];
 
       const expectedResult = {
-        [id]: [item1, item2],
         [anotherId]: [item3],
+        [id]: [item1, item2],
       };
 
       const result = groupBy(list, 'id');
@@ -125,24 +125,24 @@ describe('groupBy', () => {
       const commonField2 = 'common-field2';
 
       const item1 = {
-        id: id1,
-        name: 'First item',
         field1: 'First field1',
         field2: commonField2,
+        id: id1,
+        name: 'First item',
       };
 
       const item2 = {
-        id: id2,
-        name: 'Second item',
         field1: 'First field2',
         field2: commonField2,
+        id: id2,
+        name: 'Second item',
       };
 
       const item3 = {
-        id: id2,
-        name: 'Third item',
         field1: 'First field3',
         field2: commonField2,
+        id: id2,
+        name: 'Third item',
       };
 
       const list: IFakeItem[] = [{
