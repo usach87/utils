@@ -1,6 +1,3 @@
-#### Доступные версии
-Список доступных версий - http://nexus.action-media.ru/#browse/browse:npm-group:%40product-platform%2Futils
-
 #### Установка
 ```
 npm install --save @usachev/utils
